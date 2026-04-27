@@ -594,8 +594,35 @@
             opacity: 0.8;
         }
 
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1100;
+            background: #667eea;
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .mobile-menu-btn:hover {
+            background: #5a67d8;
+            transform: scale(1.05);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block !important;
+            }
+            
             .sidebar {
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
@@ -618,6 +645,9 @@
     </style>
 </head>
 <body>
+
+<!-- Mobile Hamburger Menu Button -->
+<button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
 
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
@@ -803,7 +833,8 @@
                             <th>Images</th>
                             <th>Status</th>
                             <th>Booked At</th>
-                        </thead>
+                        </tr>
+                    </thead>
                     <tbody>
                         @forelse($services->take(5) as $service)
                         <tr>
